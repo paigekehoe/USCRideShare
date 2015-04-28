@@ -1,4 +1,5 @@
 <?php namespace App\Http\Controllers;
+use App\Models\Ride;
 
 class WelcomeController extends Controller {
 
@@ -30,7 +31,8 @@ class WelcomeController extends Controller {
 	 */
 	public function index()
 	{
-		return view('welcome');
+		$rides = Ride::getAll();
+		return view('rides', ['ridelist'=>$rides]);
 	}
 
 }

@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('navbar')
-
+                
 @stop
 
 @section('jumbo')

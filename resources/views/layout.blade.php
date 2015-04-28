@@ -1,5 +1,4 @@
 
-<html>
 <head>
 
 <!-- jQuery -->
@@ -13,9 +12,9 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     
-  <script type="text/javascript" src="/bower_components/jquery/jquery.min.js"></script>
+
   <script type="text/javascript" src="/bower_components/moment/min/moment.min.js"></script>
-  <script type="text/javascript" src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
   <script type="text/javascript" src="/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
   <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css" />
   <link rel="stylesheet" href="/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css" />
@@ -34,6 +33,21 @@
                     <li><a href="/rides/search">Find Rides</a></li>
                     <li><a href="/rides/create">Post Ride</a></li>
                 </ul>
+              </div>
+              
+        <ul class="nav navbar-nav navbar-right">
+          @if (Auth::guest())
+            <li><a href="/auth/login">Login</a></li>
+            <li><a href="/auth/register">Register</a></li>
+          @else
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->name }} <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="/auth/logout">Logout</a></li>
+              </ul>
+            </li>
+          @endif
+        </ul>
             </div>
         </div>
     </nav>
@@ -69,7 +83,5 @@
         
 
     </body>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+ 
 
-    </html>

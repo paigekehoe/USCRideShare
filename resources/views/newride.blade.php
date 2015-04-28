@@ -44,7 +44,7 @@
         </div>
         <script type="text/javascript">
             $(function () {
-                $('#datetimepicker12').datetimepicker();
+                $('#datetimepicker1').datetimepicker();
             });
         </script>
     </div>
@@ -82,6 +82,5 @@
     </form>
 
 
-     <script type="text/javascript" src="/bower_components/jquery/jquery.min.js"></script>
-  <script type="text/javascript" src="/bower_components/moment/min/moment.min.js"></script>
+ 
 @stop
