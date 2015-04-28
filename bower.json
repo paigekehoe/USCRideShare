@@ -1,0 +1,20 @@
+{
+  "name": "laravel",
+  "version": "0.0.0",
+  "homepage": "https://github.com/paigekehoe/final-project",
+  "authors": [
+    "Paige Kehoe <pkehoe@usc.edu>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "eonasdan-bootstrap-datetimepicker": "~4.7.14",
+    "bootstrap-sass-official": "~3.3.4"
+  }
+}

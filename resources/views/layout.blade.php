@@ -1,11 +1,10 @@
 
 <head>
 
-<!-- jQuery -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="/bower_components/jquery/dist/jquery.min.js"></script>
 
 <!-- Bootstrap Core JavaScript -->
-<script src="js/bootstrap.min.js"></script>
+  <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
 
@@ -13,9 +12,9 @@
 <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     
 
-  <script type="text/javascript" src="/bower_components/moment/min/moment.min.js"></script>
+  <script src="/bower_components/moment/min/moment.min.js"></script>
 
-  <script type="text/javascript" src="/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+  <script src="/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
   <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css" />
   <link rel="stylesheet" href="/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css" />
 
@@ -74,12 +73,6 @@
             <div class="container">
                   @yield('content')
             </div>
-
-        <script type="text/javascript">
-            ('.dropdown-toggle').dropdown()
-
-        </script>
-
         
 
     </body>
