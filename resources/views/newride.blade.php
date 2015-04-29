@@ -23,28 +23,31 @@
     @endif
 
 <label>Date and Time </label>
-<div class="container">
-    <div class="row">
-        <div class='col-sm-6'>
-            <div class="form-group">
-                <div class='input-group date' id='datetimepicker1'>
-                    <input type='text' class="form-control" />
-                    <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-calendar"></span>
-                    </span>
-                </div>
-            </div>
-        </div>
-        <script type="text/javascript">
-            $(document).ready(function() {
-                $('#datetimepicker1').datetimepicker();
-            });
-        </script>
-    </div>
-</div>
+
 
 <form method="post" action="/rides">
         <input type="hidden" name="_token" value= "{{ (csrf_token()) }}" >
+
+        <div class="container">
+            <div class="row">
+                <div class='col-sm-6'>
+                    <div class="form-group">
+                        <div class='input-group date' id='datetimepicker1'>
+                            <input type='text' class="form-control" />
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <script type="text/javascript">
+                    $(document).ready(function() {
+                        $('#datetimepicker1').datetimepicker();
+                    });
+                </script>
+            </div>
+        </div>
+
         <div class="form-group">
             <label>Destination</label>
             <input name="destination" class="form-control">
