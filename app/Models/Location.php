@@ -6,14 +6,20 @@
  * Time: 5:29 PM
  */
 	use DB;
+	use Validator;
     use Illuminate\Database\Eloquent\Model;
 
 class Location extends Model {
 
-	public function create($data)
+	public static function addNew($data){
 		return DB::table('locations')->insert($data);
-        // public function dvds(){
-        //     return $this->hasMany('App\Models\Dvd');
 
-        // }
+	}
+
+	public static function validate($input){
+        return Validator::make($input, [
+            'name'=>'required',
+        ]);
+    }
+
 }

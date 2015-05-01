@@ -11,13 +11,12 @@ use App\Models\Ride;
         public function search()
         {
             $rides = DB::table('rides')->get();
-            $genres = DB::table('genres')->get();
-            return view('search', ['rides' => $rides,
-                'genres' => $genres]);
+            $locations = DB::table('locations')->get();
+            return view('search', ['rides' => $rides, 'locations'=> $locations]);
         }
 
 
-         public function rides()
+         public function rides(Request $request)
         {
             $rides = Ride::getAll();
             return view('rides', ['ridelist' => $rides]);
@@ -32,21 +31,18 @@ use App\Models\Ride;
         // }
 
         public function results(Request $request){
-            $genres = DB::table('genres')->get();
             if(empty($request)){
-                $dvds = (new Dvd())->getAllTitles();
-                $dvd_title = None;
-                $rating ='';
-                $genre = '';
+                $rides = (new Ride())->getAll();
+                $day = "whenever";
+                $location = "where ever";
             }
             else {
-                $dvd_title = $request->input('dvd_title');
-                $genre = $request->input('genre');
-                $rating =$request->input('rating');
-                $dvds = (new Dvd())->search($dvd_title, $rating, $genre);
+                $day = $request->input('datetime');
+                $location = $request->input('dest');
+                $rides = (new Ride())->search($location, $day);
             }
 
-            return view('results', ['dvds' => $dvds, 'dvd_title'=>$dvd_title, 'genres'=>$genres, 'genre'=>$genre, 'rating'=>$rating
+            return view('results', ['rides' => $rides, 'day' => $datetime, 'location' => $location
             ]);
         }
 
@@ -105,16 +101,16 @@ use App\Models\Ride;
         
 
         public function addNewRide(Request $request){
-
+            var_dump($request->input);
             $validation = Ride::validateNewRide($request->all());
             if($validation->passes()){
                 Ride::addNew([
-                    'title' => $request->input('title'),
-                    'label_id'=>$request->input('label_id'),
-                    'sound_id'=>$request->input('sound_id'),
-                    'genre_id'=>$request->input('genre_id'),
-                    'rating_id'=>$request->input('rating_id'),
-                    'format_id'=>$request->input('format_id'),
+                    'user_id' => $request->input('user_id'),
+                    'spots_avail' => $request->input('spots_avail'),
+                    'spots_filled'=>'0',
+                    'origin_id'=>$request->input('origin_id'),
+                    'destination_id'=>$request->input('destination_id'),
+                    'datetime'=>$request->input('datetime')
                 ]);
                 return redirect('/rides/create')
                 ->with('success', 'Ride created!');

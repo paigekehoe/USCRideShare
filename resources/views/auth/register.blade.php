@@ -9,6 +9,12 @@
         @endforeach
         {!!Form::open(['url'=>'/register','class'=>'form form-horizontal','style'=>'margin-top:50px'])!!}
         <div class="form-group">
+            {!! Form::label('name','Username:',['class'=>'col-sm-3 control-label']) !!}
+            <div class="col-sm-8">
+                {!! Form::text('name',Input::old('name'),['class'=>'form-control']) !!}
+            </div>
+        </div>
+        <div class="form-group">
             {!! Form::label('email','Email:',['class'=>'col-sm-3 control-label']) !!}
             <div class="col-sm-8">
                 {!! Form::text('email',Input::old('email'),['class'=>'form-control']) !!}

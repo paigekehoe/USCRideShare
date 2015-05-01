@@ -54,10 +54,11 @@ class AuthController extends Controller {
     public function postRegister(RegisterRequest $request)
     {
         //code for registering a user goes here.
+        $this->user->name = $request->name;
         $this->user->email = $request->email;
 		$this->user->password = bcrypt($request->password);
 		$this->user->save();
-		
+
         $this->auth->login($this->user); 
         return redirect('/dash-board'); 
     }
@@ -80,7 +81,7 @@ class AuthController extends Controller {
      */
     public function postLogin(LoginRequest $request)
     {
-        if ($this->auth->attempt($request->only('email', 'password')))
+        if ($this->auth->attempt($request->only('name','email', 'password')))
         {
             return redirect('/dash-board');
         }

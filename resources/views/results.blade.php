@@ -5,17 +5,13 @@
 @stop
 
 @section('jumbo')
-<h1> Available Rides</h1>
-
+<h1> Search Results</h1>
+<h3> You searched for {{ $day }} and {{ $location }} </h3>
 @stop
 
 @section('content')
 
 
-<p>
-    Here are a list of upcoming rides
-
-</p>
 
 <div class = "results">
     <table class="table table-striped">
@@ -30,11 +26,11 @@
         </thead>
 
         <tbody>
-        <?php foreach ($ridelist as $ride) : ?>
+        <?php foreach ($rides as $ride) : ?>
         <tr>
             <td><?php echo $ride->location_name?> </td>
-            <td><?php echo DATE_FORMAT(new DateTime($ride->datetime), 'm-d-Y') ?></td>
-            <td><?php echo DATE_FORMAT(new DateTime($ride->datetime), 'h:m')?></td>
+            <td><?php echo $ride->date ?></td>
+            <td><?php echo $ride->time ?></td>
             <td><?php echo $ride->spots_avail - $ride->spots_filled?></td>
             <td><?php echo $ride->origin_id ?></td>
 

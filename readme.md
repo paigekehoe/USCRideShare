@@ -1,3 +1,6 @@
+## USC Ride Share
+[![Build Status](https://travis-ci.org/paigekehoe/final-project.svg?branch=master)](https://travis-ci.org/paigekehoe/final-project)
+
 ## Laravel PHP Framework
 
 [![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)

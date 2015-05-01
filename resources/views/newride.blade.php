@@ -22,18 +22,19 @@
     <p> <h4> {{ Session::get('success') }} </h4></p>
     @endif
 
-<label>Date and Time </label>
 
 
 <form method="post" action="/rides">
         <input type="hidden" name="_token" value= "{{ (csrf_token()) }}" >
+        <input type="hidden" name="user_id" value= "{{ Auth::user()->id }}" >
 
+<label> Date and Time </label>
         <div class="container">
             <div class="row">
                 <div class='col-sm-6'>
                     <div class="form-group">
                         <div class='input-group date' id='datetimepicker1'>
-                            <input type='text' class="form-control" />
+                            <input type='text' name="datetime" class="form-control" />
                             <span class="input-group-addon">
                                 <span class="glyphicon glyphicon-calendar"></span>
                             </span>
@@ -49,22 +50,23 @@
         </div>
 
         <div class="form-group">
-            <label>Destination</label>
-            <input name="destination" class="form-control">
-        </div>
-
-        <div class="form-group">
-            <label>Meeting Point</label>
-            <input name="meetingPoint" class="form-control">
+            <label> Destination </label>
+            <select class="form-control" name="destination_id">
+                @foreach ($locations as $loc)
+                    <option value = "{{ $loc->id }}" >
+                        {{$loc->name }}
+                    </option>
+                @endforeach
+            </select>
         </div>
   
          <!-- THIS IS WHERE WE WILL INPUT A MAP TO CREATE THAT BABE -->
         <div class="form-group">
-            <label>Starting Point</label>
+            <label> Starting Point </label>
             <select class="form-control" name="origin_id">
                 @foreach ($locations as $loc)
-                    <option value = "{{ $label->id }}" >
-                        {{$loc->loc_name }}
+                    <option value = "{{ $loc->id }}" >
+                        {{$loc->name }}
                     </option>
                 @endforeach
             </select>

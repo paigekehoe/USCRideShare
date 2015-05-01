@@ -19,6 +19,15 @@ Route::get('/rides', 'RidesController@rides');
 
 Route::get('/rides/create', 'RidesController@create');
 
+Route::get('/rides/search', 'RidesController@search');
+
+Route::get('/rides/results', 'RidesController@results');
+
+Route::post('/rides', 'RidesController@addNewRide');
+
+Route::get('/admin/location', 'LocationController@createLoc');
+
+Route::post('/locations', 'LocationController@addNewLocation');
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',
