@@ -10,15 +10,15 @@ use App\Models\Ride;
 
         public function search()
         {
-            $rides = DB::table('rides')->get();
+            $ridelist = DB::table('rides')->get();
             $locations = DB::table('locations')->get();
-            return view('search', ['rides' => $rides, 'locations'=> $locations]);
+            return view('search', ['ridelist' => $ridelist, 'locations'=> $locations]);
         }
 
 
          public function rides(Request $request)
         {
-            $rides = Ride::getAll();
+            $rides = Ride::getAll()['data'];
             return view('rides', ['ridelist' => $rides]);
         }
 
@@ -32,17 +32,17 @@ use App\Models\Ride;
 
         public function results(Request $request){
             if(empty($request)){
-                $rides = (new Ride())->getAll();
+                $ridelist = (new Ride())->getAll();
                 $day = "whenever";
                 $location = "where ever";
             }
             else {
-                $day = $request->input('datetime');
+                $datetime = $request->input('datetime');
                 $location = $request->input('dest');
-                $rides = (new Ride())->search($location, $day);
+                $ridelist = (new Ride())->search($location, $datetime);
             }
 
-            return view('results', ['rides' => $rides, 'day' => $datetime, 'location' => $location
+            return view('results', ['ridelist' => $ridelist, 'datetime' => $datetime, 'location' => $location
             ]);
         }
 
@@ -75,7 +75,7 @@ use App\Models\Ride;
 
         public function create(){
             $locations = DB::table('locations')->get();
-            return view('newride', ['locations'=>$locations]);
+            return view('newride', ['locations' => $locations ]);
         }
 
         // public function createReview(Request $request){
@@ -101,7 +101,6 @@ use App\Models\Ride;
         
 
         public function addNewRide(Request $request){
-            var_dump($request->input);
             $validation = Ride::validateNewRide($request->all());
             if($validation->passes()){
                 Ride::addNew([

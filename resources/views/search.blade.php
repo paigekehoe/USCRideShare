@@ -24,7 +24,7 @@
                 </option>
               @foreach ($locations as $loc)
                     <option value = "{{ $loc->id }}" >
-                        {{$loc->name }}
+                        {{ $loc->location_name }}
                     </option>
                 @endforeach
 

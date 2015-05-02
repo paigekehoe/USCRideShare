@@ -26,7 +26,7 @@
 
 <form method="post" action="/rides">
         <input type="hidden" name="_token" value= "{{ (csrf_token()) }}" >
-        <input type="hidden" name="user_id" value= "{{ Auth::user()->id }}" >
+
 
 <label> Date and Time </label>
         <div class="container">
@@ -54,7 +54,7 @@
             <select class="form-control" name="destination_id">
                 @foreach ($locations as $loc)
                     <option value = "{{ $loc->id }}" >
-                        {{$loc->name }}
+                        {{ $loc->location_name }}
                     </option>
                 @endforeach
             </select>
@@ -66,7 +66,7 @@
             <select class="form-control" name="origin_id">
                 @foreach ($locations as $loc)
                     <option value = "{{ $loc->id }}" >
-                        {{$loc->name }}
+                        {{ $loc->location_name }}
                     </option>
                 @endforeach
             </select>
