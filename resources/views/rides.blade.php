@@ -32,7 +32,7 @@
         <tbody>
         <?php foreach ($ridelist as $ride) : ?>
         <tr>
-            <td><?php echo $ride->location_name?> </td>
+            <td> {{ $ride->destination_id }} </td>
             <td><?php echo DATE_FORMAT(new DateTime($ride->datetime), 'm-d-Y') ?></td>
             <td><?php echo DATE_FORMAT(new DateTime($ride->datetime), 'h:m')?></td>
             <td><?php echo $ride->spots_avail - $ride->spots_filled?></td>

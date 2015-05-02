@@ -31,14 +31,18 @@ class Ride extends Model {
     public static function getAll(){
         $query = DB::table('rides')
             ->select('*', 'rides.id as ride_id')
-            ->join('locations', function($join)
-            { 
-                $join->on('locations.id', '=', 'rides.origin_id')
-                 ->on('locations.id',  '=', 'rides.destination_id');
-            })
+            ->join('locations', 'locations.id', '=', 'rides.destination_id')//function($join)
+            // { 
+            //     $join->on('locations.id', '=', 'rides.origin_id')
+            //      ->on('locations.id',  '=', 'rides.destination_id');
+            // })
             ->join('users', 'users.id', '=', 'rides.user_id');
 
         $query->orderBy('datetime');
+        //$query->get();
+        //dd(DB::getQueryLog());
+        //dd($query);
+        var_dump($query->get());
         return $query->get();
     }
 
