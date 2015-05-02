@@ -25,6 +25,7 @@ to add locations or remove them - but only as an Admin (david) -->
     <p> <h4> {{ Session::get('success') }} </h4></p>
     @endif
 
+@if(Auth::check() and Auth::user()->name==david)
 
 <form method="post" action="/locations">
         <input type="hidden" name="_token" value= "{{ (csrf_token()) }}" >
@@ -51,7 +52,11 @@ to add locations or remove them - but only as an Admin (david) -->
         </div>
         <button type="submit" class="btn btn-default">Submit</button>
     </form>
+@else
 
+Sorry you are not an admin.  Good try though :)
+
+@endif
 
  
 @stop

@@ -22,11 +22,11 @@
     <p> <h4> {{ Session::get('success') }} </h4></p>
     @endif
 
-
+@if(Auth::check())
 
 <form method="post" action="/rides">
         <input type="hidden" name="_token" value= "{{ (csrf_token()) }}" >
-
+        <input type="hidden" name="user_id" value= "{{ Auth::id() }}" >
 
 <label> Date and Time </label>
         <div class="container">
@@ -79,6 +79,10 @@
         <button type="submit" class="btn btn-default">Submit</button>
     </form>
 
+@else 
 
+Sorry you must be logged in to post a ride!
+
+@endif
  
 @stop
