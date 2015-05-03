@@ -31,7 +31,7 @@ class WelcomeController extends Controller {
 	 */
 	public function index()
 	{
-		$rides = Ride::getAll();
+		$rides = Ride::getAll()['data'];
 		return view('rides', ['ridelist'=>$rides]);
 	}
 
