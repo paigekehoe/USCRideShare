@@ -3,49 +3,11 @@
 use Illuminate\Http\Request;
 use DB;
 use App\Models\Location;
+use Gmaps;
 
 // use App\Services\RottenTomatoes;
 
     class LocationController extends Controller {
-
-        // public function search()
-        // {
-        //     $rides = DB::table('rides')->get();
-        //     $locations = DB::table('locations')->get();
-        //     return view('search', ['rides' => $rides, 'locations'=> $locations]);
-        // }
-
-
-        //  public function locations(Request $request)
-        // {
-        //     $rides = Ride::getAll();
-        //     return view('rides', ['ridelist' => $rides]);
-        // }
-
-        // public function home()
-        // {
-        //     $ratings = DB::table('ratings')->get();
-        //     $genres = DB::table('genres')->get();
-        //     return view('home', ['ratings' => $ratings,
-        //         'genres' => $genres]);
-        // }
-
-        // public function results(Request $request){
-        //     if(empty($request)){
-        //         $rides = (new Ride())->getAll();
-        //         $day = "whenever";
-        //         $location = "where ever";
-        //     }
-        //     else {
-        //         $day = $request->input('date');
-        //         $location = $request->input('dest');
-        //         $rides = (new Ride())->search($location, $day);
-        //     }
-
-        //     return view('results', ['rides' => $rides, 'day' => $day, 'location' => $location
-        //     ]);
-        // }
-
 
         // public function detailview($ride_id){
         //     $ride = Ride::getRide($ride_id);
@@ -58,7 +20,58 @@ use App\Models\Location;
 
         public function createLoc(){
 
-            return view('admin');
+        //     $config = array();
+        //     $config['center'] = 'auto';
+        //     $config['onboundschanged'] = 'if (!centreGot) {
+        //             var mapCentre = map.getCenter();
+        //             marker_0.setOptions({
+        //                 position: new google.maps.LatLng(mapCentre.lat(), mapCentre.lng())
+        //             });
+        //         }
+        //         centreGot = true;';
+
+        // Gmaps::initialize($config);
+
+        // // set up the marker ready for positioning
+        // // once we know the users location
+        // $marker = array();
+        // Gmaps::add_marker($marker);
+
+        // $map = Gmaps::create_map();
+        //$this->load->library('googlemaps');
+
+        $config['center'] = '34.0205, -118.2856';
+        $config['zoom'] = '5';
+        $config['geocodeCaching'] = TRUE;
+
+        $locations = Location::getAll();
+        Gmaps::initialize($config);
+
+        $marker = array();
+        $marker['position'] = '34.0205, -118.2856';
+        $marker['draggable'] = true;
+        $marker['infowindow_content'] = "I'm a new location!";
+        Gmaps::add_marker($marker);
+        // $marker = array();
+        // $marker['position'] = '37.409, -122.1319';
+        // $marker['draggable'] = TRUE;
+        // $marker['animation'] = 'DROP';
+        // Gmaps::add_marker($marker);
+        // //$this->googlemaps->add_marker($marker);
+
+        // $marker = array();
+        // $marker['position'] = '37.449, -122.1419';
+        // $marker['onclick'] = 'alert("You just clicked me!!")';
+        // Gmaps::add_marker($marker);
+        //$this->googlemaps->add_marker($marker);
+
+        $data['map'] = Gmaps::create_map();
+        //$data['map'] = $this->googlemaps->create_map();
+        //$data = ['map' => $map ];
+
+            //$this->load->view('view_file', $data);
+
+            return view('admin', $data);
         }
 
 
@@ -67,7 +80,7 @@ use App\Models\Location;
             $validation = Location::validate($request->all());
             if($validation->passes()){
                 Location::addNew([
-                    'name' => $request->input('name'),
+                    'location_name' => $request->input('name'),
 
                 ]);
                 return redirect('admin')
@@ -78,6 +91,11 @@ use App\Models\Location;
                     ->withInput()
                     ->withErrors($validation);
             }
+        }
+
+        public function aboutLocation($loc_id){
+            $location = Location::getLocation($loc_id);
+            return view('aboutlocation', $location);
         }
 
 

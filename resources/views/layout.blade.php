@@ -1,6 +1,6 @@
 
 <head>
-
+@yield('headder')
 <script src="/bower_components/jquery/dist/jquery.min.js"></script>
 
 <!-- Bootstrap Core JavaScript -->
@@ -27,7 +27,7 @@
         <div class="container-fluid">
             <div class="navbar-header ">
                 <ul class="nav navbar-nav">
-                    <li><a class="active" href="#"><strong>USC Ride Share </strong></a></li>
+                    <li><a class="active" href="#"><strong> USC Ride Share </strong></a></li>
                     <li><a href="/rides">Home</a></li>
                     <li><a href="/rides/search">Find Rides</a></li>
                     <li><a href="/rides/create">Post Ride</a></li>

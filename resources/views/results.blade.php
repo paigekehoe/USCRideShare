@@ -6,7 +6,7 @@
 
 @section('jumbo')
 <h1> Search Results</h1>
-<h3> You searched for {{ $datetime }} and {{ $location }} </h3>
+<h3> You searched for {{{ $datetime or 'any day' }} and {{{ $location or 'any place' }}} </h3>
 @stop
 
 @section('content')

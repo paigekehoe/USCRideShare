@@ -1,4 +1,10 @@
 @extends('layout')
+@section('headder')
+
+<head>
+<?php echo $map['js']; ?>
+</head>
+@stop
 
 @section('navbar')
                 
@@ -11,16 +17,14 @@
 
 @section('content')
 
+<div class="col-md-6">
 
-<p>
-    Here are a list of upcoming rides
+    <?php echo $map['html']; ?>
+</div>
 
-</p>
-
-
-<div class = "results">
-    <table class="table table-striped">
-        <thead>
+<div class = "col-md-6">
+    <table class="table table-hover">
+        <thead> 
             <tr>
                 <th>Destination</th>
                 <th>Meeting Point</th>
@@ -33,9 +37,9 @@
         <tbody>
         @foreach ($ridelist as $ride)
 
-        <tr>
-            <td> {{ $ride->location_name }} </td>
-            <td> {{ $ride->origin_id }} </td>
+        <tr class='clickable-row' data-href="/rides/<?php echo $ride->id ?>">
+            <td>  <a href="/loc/ations<?php echo $ride->destination_id ?>"> {{ $ride->location_name }} </td>
+            <td>{{ $ride->origin_id }} </td>
             <td> {{ $ride->datetime }} </td>
             <td> </td>
             <td> {{ $ride->spots_avail - $ride->spots_filled }} </td>
@@ -45,9 +49,18 @@
         </tbody>
     </table>
 
+</div>
+<div>
+
+
 
 </div>
 
-
+<script 
+<script type="text/javascript">
+    $(".clickable-row").click(function() {
+        window.document.location = $(this).data("href");
+    });
+</script>
 
 @stop

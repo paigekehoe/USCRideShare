@@ -2,7 +2,9 @@
 
 use Illuminate\Http\Request;
 use DB;
+use Gmaps;
 use App\Models\Ride;
+use App\Models\Location;
 
 // use App\Services\RottenTomatoes;
 
@@ -18,8 +20,28 @@ use App\Models\Ride;
 
          public function rides(Request $request)
         {
-            $rides = Ride::getAll()['data'];
-            return view('rides', ['ridelist' => $rides]);
+
+
+            $config['center'] = '34.0205, -118.2856';
+            $config['zoom'] = 'auto';
+            $config['geocodeCaching'] = TRUE;
+
+            $locations = Location::getAll();
+            $info['ridelist'] = Ride::getAll()['data'];
+
+            Gmaps::initialize($config);
+
+            foreach($locations as $loc) {
+                $marker = array();
+                $marker['position'] = $loc->lat.','.$loc->lng;
+                //$marker['onclick'] = 'locationDetails( $loc->name) ';
+               // $marker['infowindow_content'] = "I'm a new location!";
+                Gmaps::add_marker($marker);
+            }
+
+            $info['map'] = Gmaps::create_map();
+
+            return view('rides', $info); //['ridelist' => $rides, $info]);
         }
 
         // public function home()
@@ -68,7 +90,7 @@ use App\Models\Ride;
 
             $data = ['ride'=>$ride];
 
-            return view('detailview', $data);
+            return view('ridedetails', $data);
         }
 
 

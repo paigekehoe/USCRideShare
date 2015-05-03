@@ -1,15 +1,20 @@
 @extends('layout')
 
-    
+@section('headder')
+
+<head>
+<?php echo $map['js']; ?>
+</head>
+
+@stop
 
 @section('navbar')
-
 @stop
 
 @section('jumbo')
 
 <h1>Admin Dashboard</h1>
-lets do some damage
+lets do some damage :)
 
 <!-- THIS IS THE PAGE WHERE WE SHOULD BE ABLE
 to add locations or remove them - but only as an Admin (david) -->
@@ -25,7 +30,7 @@ to add locations or remove them - but only as an Admin (david) -->
     <p> <h4> {{ Session::get('success') }} </h4></p>
     @endif
 
-@if(Auth::check() and Auth::user()->name==david)
+@if(Auth::check() || Auth::user()->name=='david')
 
 <form method="post" action="/locations">
         <input type="hidden" name="_token" value= "{{ (csrf_token()) }}" >
@@ -39,17 +44,18 @@ to add locations or remove them - but only as an Admin (david) -->
         </div>
 
         <div class="form-group">
-            <label>Meeting Point</label>
-            <input name="meetingPoint" class="form-control">
-        </div>
-  
+            <label>Select Location </label>
+            <!-- <input type="text" id="myPlaceTextBox" /> -->
+
+
+ 
+
+<?php echo $map['html']; ?>
+
+</div>
          <!-- THIS IS WHERE WE WILL INPUT A MAP TO CREATE THAT BABE -->
 
 
-        <div class="form-group">
-            <label>Number of Spots</label>
-            <input name="spots_avail" class="form-control">
-        </div>
         <button type="submit" class="btn btn-default">Submit</button>
     </form>
 @else

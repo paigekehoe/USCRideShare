@@ -56,11 +56,7 @@ class Ride extends Model {
     public static function getRide($id){
         $query = DB::table('rides')
             ->select('*', 'rides.id as ride_id')
-            ->join('ratings', 'ratings.id','=','rides.rating_id')
-            ->join('genres', 'genres.id','=','rides.genre_id')
-            ->join('labels', 'labels.id','=','rides.label_id')
-            ->join('sounds', 'sounds.id','=','rides.sound_id')
-            ->join('formats', 'formats.id','=','rides.format_id')
+            ->join('locations as destination',  'destination.id', '=', 'rides.destination_id')
             ->where('rides.id', $id);
 
         return $query->first();

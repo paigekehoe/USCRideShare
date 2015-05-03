@@ -18,8 +18,20 @@ class Location extends Model {
 
 	public static function validate($input){
         return Validator::make($input, [
-            'name'=>'required',
+            'location_name'=>'required',
         ]);
     }
 
+    public static function getAll(){
+
+	   return DB::table('locations')->get();
+	}
+
+	public static function getLocation($id){
+        $query = DB::table('locations')
+            ->select('*', 'locations.id as location_id')
+            ->where('locations.id', $id);
+
+        return $query->first();
+    }
 }

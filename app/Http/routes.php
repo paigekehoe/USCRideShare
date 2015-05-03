@@ -23,11 +23,15 @@ Route::get('/rides/search', 'RidesController@search');
 
 Route::get('/rides/results', 'RidesController@results');
 
+Route::get('/rides/{id}', 'RidesController@detailview');
+
 Route::post('/rides', 'RidesController@addNewRide');
 
-Route::get('/admin/location', 'LocationController@createLoc');
+Route::get('/newLocation', 'LocationController@createLoc');
 
 Route::post('/locations', 'LocationController@addNewLocation');
+
+Route::get('/locations/{id}', 'LocationController@aboutLocation');
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',
