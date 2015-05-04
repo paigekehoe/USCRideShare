@@ -1,8 +1,11 @@
 @extends('layout')
+
 @section('headder')
 
 <head>
+
 <?php echo $map['js']; ?>
+
 </head>
 @stop
 
@@ -10,19 +13,22 @@
                 
 @stop
 
-@section('jumbo')
-<h1> Available Rides</h1>
-
-@stop
-
 @section('content')
 
 <div class="col-md-6">
+    <div class="widget-container boxed">
+    <h3 class="widget-title">Location Map</h3>
+    <div class="inner">
 
     <?php echo $map['html']; ?>
 </div>
+</div>
+</div>
 
 <div class = "col-md-6">
+    <div class="widget-container boxed">
+    <h3 class="widget-title">Available Rides</h3>
+    <div class="inner">
     <table class="table table-hover">
         <thead> 
             <tr>
@@ -48,7 +54,8 @@
 
         </tbody>
     </table>
-
+</div>
+</div>
 </div>
 <div>
 

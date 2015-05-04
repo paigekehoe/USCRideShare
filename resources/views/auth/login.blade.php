@@ -1,28 +1,38 @@
 @extends('layout')
  
 @section('content')
-    <div class="col-md-8 col-md-offset-2 form-content">
-        <h3 class="heading">Login</h3>
+<div class="col-sm-8">
+<div class="widget-container widget_login style boxed">
+   
+        
         @foreach($errors->all() as $error)
             <p class="alert alert-danger">{!!$error!!}</p>
         @endforeach
+        <div class="inner">
+        <h3>Login</h3>
         {!!Form::open(['url'=>'/login','class'=>'form form-horizontal','style'=>'margin-top:50px'])!!}
         <div class="form-group">
-            {!! Form::label('name','Username:',['class'=>'col-sm-3 control-label']) !!}
-            <div class="col-sm-8">
+            {!! Form::label('name','Username:',['class'=>'label_title']) !!}
+            <div class="field_text">
                 {!! Form::text('name',Input::old('name'),['class'=>'form-control']) !!}
             </div>
         </div>
+
         <div class="form-group">
-        {!! Form::label('password','Password:',['class'=>'col-sm-3 control-label']) !!}
-            <div class="col-sm-8">
+        {!! Form::label('password','Password:',['class'=>'label_title']) !!}
+
+            <div class="field_text">
                 {!! Form::password('password',['class'=>'form-control']) !!}
             </div>
         </div>
-        <div class="text-center">
-            {!!Form::submit('Login',['class'=>'btn btn-default'])!!}
+        <div class="rowSubmit">
+            <span id="login-submit" class="button">
+            {!!Form::submit('Login',['class'=>'btn'])!!}
+            </span>
         </div>
         {!!Form::close()!!}
     </div>
- 
+</div>
+</div>
+ </div>
 @stop
