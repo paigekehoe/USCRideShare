@@ -80,8 +80,9 @@
     </form>
 
 @else 
-
-Sorry you must be logged in to post a ride!
+<div class="col-md-6">
+<p class="alert alert-danger">Sorry you must be logged in to post a ride!</p>
+</div>
 
 @endif
  

@@ -6,21 +6,16 @@
 
 @section('navbar')
 @stop
-
-@section('jumbo')
-
-
-        @foreach($errors->all() as $error)
+@foreach($errors->all() as $error)
             <p class="alert alert-danger">{!!$error!!}</p>
-        @endforeach
+@endforeach
 
-    @if(Session::has('success'))
+@if(Session::has('success'))
     <p> <h4> {{ Session::get('success') }} </h4></p>
-    @endif
+@endif
 
 
 <h1>Hello, {{ Auth::user()->name }}!</h1>
-<h2> How are you today? </h2>
 @stop
 
 @section('content')

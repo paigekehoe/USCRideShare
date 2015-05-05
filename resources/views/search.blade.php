@@ -12,8 +12,10 @@
 @stop
 
 @section('content')
+<div class="post-item boxed">
 <div class="col-md-6">
-    <div class="container-fluid">
+<div class="inner">
+
     <div class="row">
     <form action="/rides/results" method="get">
         <div class="form-group">
@@ -30,8 +32,6 @@
 
             </select>
         </div>
-
-        <div class="container">
 
             <div class="row">
                 <label> When would you like to go? </label>
@@ -55,7 +55,8 @@
 
 
     </form>
-
+</div>
+</div>
     </div>
 </div>
 
