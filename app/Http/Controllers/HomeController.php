@@ -31,7 +31,7 @@ class HomeController extends Controller {
 	public function index()
 	{
 		// SHOULD ADD IN LOGIC TO REROUTE DAVID TO ADMIN PAGE
-		return view('rides'); ## was home
+		return view('welcome'); ## was home
 	}
 
 }

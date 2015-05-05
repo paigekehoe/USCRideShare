@@ -2,8 +2,6 @@
 
 namespace App\Services;
 use \Cache;
-use Ivory\GoogleMap\Map;
-use Ivory\GoogleMap\MapTypeId;
 
 
 class RottenTomatoes {
@@ -23,7 +21,7 @@ class RottenTomatoes {
             $jsonString = file_get_contents($url);
             $rawData = json_decode($jsonString);
             Cache::put("tomatoe-$dvd_title", $jsonString, 60);
-        }
+        }x
         if($rawData->total == 0){
             return null;
         }
@@ -34,8 +32,9 @@ class RottenTomatoes {
     }
 
 }
-
-
+https://api.instagram.com/v1/locations/search?lat=48.858844&lng=2.294351&access_token=18d3e66a27794277be584c98feaa8b8c
+https://api.instagram.com/v1/tags/nofilter/media/recent?client_id=18d3e66a27794277be584c98feaa8b8c
+https://api.instagram.com/v1/locations/{location-id}/media/recent?access_token=18d3e66a27794277be584c98feaa8b8c
 
 $map = new Map();
 

@@ -60,7 +60,7 @@ class AuthController extends Controller {
 		$this->user->save();
 
         $this->auth->login($this->user); 
-        return redirect('rides'); 
+        return redirect('welcome'); 
     }
  
     /**
@@ -83,7 +83,7 @@ class AuthController extends Controller {
     {
         if ($this->auth->attempt($request->only('name', 'password')))
         {
-            return redirect('rides');
+            return redirect('welcome');
         }
  
         return redirect('/login')->withErrors([

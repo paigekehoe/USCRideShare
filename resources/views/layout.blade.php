@@ -52,7 +52,7 @@
             <li><a href="/auth/login">Login</a></li>
             <li><a href="/auth/register">Register</a></li>
           @else
-              <li><a href="/profile/{{ Auth::user()->name }}">
+              <li><a href="home">
                 {{ Auth::user()->name }} </a></li>
                 <li><a href="/auth/logout">Logout</a></li>
               </ul>
