@@ -1,8 +1,11 @@
 <!-- -->
 @extends('layout')
- 
+@section('navbar')
+@stop
+
 @section('content')
-    <div class="col-md-8 col-md-offset-2 form-content">
+    <div class="col-md-8 col">
+        <div class="widget-container widget_register style boxed">
         <h3 class="heading">Register</h3>
         @foreach($errors->all() as $error)
             <p class="alert alert-danger">{!!$error!!}</p>

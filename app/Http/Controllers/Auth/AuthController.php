@@ -60,7 +60,7 @@ class AuthController extends Controller {
 		$this->user->save();
 
         $this->auth->login($this->user); 
-        return redirect('/dash-board'); 
+        return redirect('rides'); 
     }
  
     /**
@@ -81,13 +81,13 @@ class AuthController extends Controller {
      */
     public function postLogin(LoginRequest $request)
     {
-        if ($this->auth->attempt($request->only('name','email', 'password')))
+        if ($this->auth->attempt($request->only('name', 'password')))
         {
-            return redirect('/dash-board');
+            return redirect('rides');
         }
  
         return redirect('/login')->withErrors([
-            'email' => 'The credentials you entered did not match our records. Try again?',
+            'name' => 'The credentials you entered did not match our records. Try again?',
         ]);
     }
  

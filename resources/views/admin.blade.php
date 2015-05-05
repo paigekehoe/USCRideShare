@@ -2,10 +2,6 @@
 
 @section('headder')
 
-<head>
-<?php echo $map['js']; ?>
-</head>
-
 @stop
 
 @section('navbar')
@@ -32,32 +28,9 @@ to add locations or remove them - but only as an Admin (david) -->
 
 @if(Auth::check() || Auth::user()->name=='david')
 
-<form method="post" action="/locations">
-        <input type="hidden" name="_token" value= "{{ (csrf_token()) }}" >
+Hey Admin :) What would you like to do?
 
-        <div class="container">
-            <div class="row">
-                <div class='col-sm-6'>
-                    <div class="form-group">
-            <label>Name</label>
-            <input name="name" class="form-control">
-        </div>
-
-        <div class="form-group">
-            <label>Select Location </label>
-            <!-- <input type="text" id="myPlaceTextBox" /> -->
-
-
- 
-
-<?php echo $map['html']; ?>
-
-</div>
-         <!-- THIS IS WHERE WE WILL INPUT A MAP TO CREATE THAT BABE -->
-
-
-        <button type="submit" class="btn btn-default">Submit</button>
-    </form>
+<a href="newLocation">Create a New Location</a>
 @else
 
 Sorry you are not an admin.  Good try though :)

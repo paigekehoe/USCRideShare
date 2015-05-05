@@ -71,7 +71,7 @@ use Gmaps;
 
             //$this->load->view('view_file', $data);
 
-            return view('admin', $data);
+            return view('newLocation', $data);
         }
 
 

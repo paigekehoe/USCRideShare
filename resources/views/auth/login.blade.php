@@ -25,10 +25,8 @@
                 {!! Form::password('password',['class'=>'form-control']) !!}
             </div>
         </div>
-        <div class="rowSubmit">
-            <span id="login-submit" class="button">
-            {!!Form::submit('Login',['class'=>'btn'])!!}
-            </span>
+        <div class="text-center">
+            {!!Form::submit('Login',['class'=>'btn btn-default'])!!}
         </div>
         {!!Form::close()!!}
     </div>
