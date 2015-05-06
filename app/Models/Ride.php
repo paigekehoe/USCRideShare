@@ -20,7 +20,7 @@ class Ride extends Model {
         if($location!=-1 && $location!=null){
             $query->where('destination_id', '=', $location);
         }
-        if($day !=-1 && $day!=null){
+        if($day !='-1' && $day!=null){
             $query->where('rides.datetime', '=', $day);
         }
         $query->orderBy('datetime');

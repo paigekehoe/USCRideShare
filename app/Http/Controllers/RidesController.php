@@ -62,23 +62,6 @@ use App\Models\Location;
 
         public function detailview($ride_id){
             $ride = Ride::getRide($ride_id);
-            // $reviews = Dvd::getReviews($dvd_id);
-            // $rtInfo = RottenTomatoes::search($dvd->title);
-
-//            if(ends_with($dvd->title,' 1')):
-//                $sTitle = $dvd->title - ' 1';
-//                $searchTitle = strtolower($sTitle);
-//            else:
-//                $searchTitle = strtolower($dvd->title);
-//            endif;
-//
-//            foreach ($rawData->movies as $m):
-//                if (strtolower($m->title) == $searchTitle) :
-//                    $rtInfo = $m;
-//                endif;
-//            endforeach;
-
-
             $data = ['ride'=>$ride];
 
             return view('ridedetails', $data);

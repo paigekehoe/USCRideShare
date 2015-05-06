@@ -71,8 +71,9 @@ use App\Services\Weather;
             $weather = Weather::format($weatherRaw);
             $data = ['loc'=>$loc, 'weather'=>$weather];
             $weather['loc'] = $loc;
-            $nada = 'None';
+            $nada = "-1";
             $ridelist = (new Ride())->search($loc_id, $nada);
+            var_dump($ridelist);
             $weather['ridelist'] = $ridelist;
             return view('aboutlocation', $weather);
         }

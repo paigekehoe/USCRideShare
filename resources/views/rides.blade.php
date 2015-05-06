@@ -54,7 +54,7 @@
         <tbody>
         @foreach ($ridelist as $ride)
 
-        <tr class='clickable-row' data-href="/rides/<?php echo $ride->id ?>">
+        <tr class='clickable-row' data-href="/locations/<?php echo $ride->destination_id ?>">
             <td>  <a href="/locations/<?php echo $ride->destination_id ?>"> {{ $ride->location_name }} </td>
             <td> {{ $ride->datetime }} </td>
             <td> {{ $ride->spots_avail - $ride->spots_filled }} </td>
