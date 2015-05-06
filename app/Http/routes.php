@@ -31,7 +31,7 @@ Route::get('/newLocation', 'LocationController@createLoc');
 
 Route::post('/locations', 'LocationController@addNewLocation');
 
-Route::get('/locations/{id}', 'LocationController@aboutLocation');
+Route::get('/locations/{id}', 'LocationController@aboutLoc');
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',

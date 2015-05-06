@@ -18,7 +18,7 @@ class Location extends Model {
 
 	public static function validate($input){
         return Validator::make($input, [
-            'location_name'=>'required',
+            'location_name'=>'required|unique:locations',
         ]);
     }
 
@@ -31,7 +31,6 @@ class Location extends Model {
         $query = DB::table('locations')
             ->select('*', 'locations.id as location_id')
             ->where('locations.id', $id);
-
         return $query->first();
     }
 }

@@ -4,6 +4,7 @@ namespace App\Models;
 use DB;
 use Validator;
 use Illuminate\Database\Eloquent\Model;
+use DateTime;
 
 class Ride extends Model {
 
@@ -20,7 +21,7 @@ class Ride extends Model {
             $query->where('destination_id', '=', $location);
         }
         if($day !=-1 && $day!=null){
-            $query->where('rides.datetime', '=', $datetime);
+            $query->where('rides.datetime', '=', $day);
         }
         $query->orderBy('datetime');
 
@@ -39,19 +40,8 @@ class Ride extends Model {
             ->orderBy('datetime')
             ->paginate(30, array('destination.location_name as dest_name', 'origin.location_name as origin_name', 'rides.datetime', 'rides.spots_avail','rides.spots_filled'));
 
-        
-        //var_dump($query);
-        //dd(DB::getQueryLog());
-        //dd($query);
         return $query->toArray();
     }
-
-
-    // $data = News::order_by('news.id', 'desc')
-    // ->join('categories', 'news.category_id', '=', 'categories.id')
-    // ->join('users as u1', 'news.user_id', '=', 'u1.id') // ['created_by']
-    // ->join('users as u2', 'news.modified_by', '=', 'u2.id') // ['modified_by']
-    // ->paginate(30, array('news.title', 'categories.name as categories', 'u1.name as creater_username', 'u2.name as modifier_username'));
 
     public static function getRide($id){
         $query = DB::table('rides')
@@ -62,33 +52,12 @@ class Ride extends Model {
         return $query->first();
     }
 
-    public static function getReviews($id){
-        $query = DB::table('reviews')
-            ->select('title', 'description', 'rating')
-            ->where('ride_id',$id);
-
-        return $query->get();
-
-    }
-
-    public static function createReview($data){
-        return DB::table('reviews')->insert($data);
-    }
-
-    public static function validate($input){
-        return Validator::make($input, [
-            'rating' => 'required|integer',
-            'review_title' => 'required|min:5',
-            'description' => 'required|min:20',
-        ]);
-    }
-
     public static function validateNewRide($input){
+
         return Validator::make($input, [
             'destination_id'=>'required',
-            'origin_id'=>'required',
             'spots_avail'=>'required|integer',
-            'datetime'=>'required',
+            'datetime'=>'required|date|after:today',
         ]);
     }
 

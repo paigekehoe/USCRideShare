@@ -13,8 +13,10 @@
 
 @section('jumbo')
 
+
+
 <h1>New Location!</h1>
-Use the map to select the geographical coordinates of your location and input a name.
+
 
 <!-- THIS IS THE PAGE WHERE WE SHOULD BE ABLE
 to add locations or remove them - but only as an Admin (david) -->
@@ -31,6 +33,10 @@ to add locations or remove them - but only as an Admin (david) -->
     @endif
 
 @if(Auth::check() || Auth::user()->name=='david')
+
+<div class="controls boxed">
+    <div class="inner clearfix">
+<h3> Drag the market to the geographical coordinates of your location and input a name. </h3>
 
 <form method="post" action="/locations">
         <input type="hidden" name="_token" value= "{{ (csrf_token()) }}" >
@@ -58,6 +64,9 @@ to add locations or remove them - but only as an Admin (david) -->
 
         <button type="submit" class="btn btn-default">Submit</button>
     </form>
+</div>
+</div>
+
 @else
 
 Sorry you are not an admin.  Good try though :)

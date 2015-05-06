@@ -3,7 +3,9 @@
 use Illuminate\Http\Request;
 use DB;
 use App\Models\Location;
+use App\Models\Ride;
 use Gmaps;
+use App\Services\Weather;
 
 // use App\Services\RottenTomatoes;
 
@@ -20,26 +22,6 @@ use Gmaps;
 
         public function createLoc(){
 
-        //     $config = array();
-        //     $config['center'] = 'auto';
-        //     $config['onboundschanged'] = 'if (!centreGot) {
-        //             var mapCentre = map.getCenter();
-        //             marker_0.setOptions({
-        //                 position: new google.maps.LatLng(mapCentre.lat(), mapCentre.lng())
-        //             });
-        //         }
-        //         centreGot = true;';
-
-        // Gmaps::initialize($config);
-
-        // // set up the marker ready for positioning
-        // // once we know the users location
-        // $marker = array();
-        // Gmaps::add_marker($marker);
-
-        // $map = Gmaps::create_map();
-        //$this->load->library('googlemaps');
-
         $config['center'] = '34.0205, -118.2856';
         $config['zoom'] = '5';
         $config['geocodeCaching'] = TRUE;
@@ -52,18 +34,6 @@ use Gmaps;
         $marker['draggable'] = true;
         $marker['infowindow_content'] = "I'm a new location!";
         Gmaps::add_marker($marker);
-        // $marker = array();
-        // $marker['position'] = '37.409, -122.1319';
-        // $marker['draggable'] = TRUE;
-        // $marker['animation'] = 'DROP';
-        // Gmaps::add_marker($marker);
-        // //$this->googlemaps->add_marker($marker);
-
-        // $marker = array();
-        // $marker['position'] = '37.449, -122.1419';
-        // $marker['onclick'] = 'alert("You just clicked me!!")';
-        // Gmaps::add_marker($marker);
-        //$this->googlemaps->add_marker($marker);
 
         $data['map'] = Gmaps::create_map();
         //$data['map'] = $this->googlemaps->create_map();
@@ -93,9 +63,18 @@ use Gmaps;
             }
         }
 
-        public function aboutLocation($loc_id){
-            $location = Location::getLocation($loc_id);
-            return view('aboutlocation', $location);
+        public function aboutLoc($loc_id){
+            
+            $loc = Location::getLocation($loc_id);
+            
+            $weatherRaw = Weather::getWeather($loc);
+            $weather = Weather::format($weatherRaw);
+            $data = ['loc'=>$loc, 'weather'=>$weather];
+            $weather['loc'] = $loc;
+            $nada = 'None';
+            $ridelist = (new Ride())->search($loc_id, $nada);
+            $weather['ridelist'] = $ridelist;
+            return view('aboutlocation', $weather);
         }
 
 

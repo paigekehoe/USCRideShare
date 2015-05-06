@@ -33,8 +33,6 @@
     </div>
   </div>
 
-
-  <div>
     <nav class="menu">
         <div class="container-fluid">
             <div class="navbar-header ">
@@ -42,51 +40,30 @@
                     <li><a href="/rides">Home</a></li>
                     <li><a href="/rides/search">Find Rides</a></li>
                     <li><a href="/rides/create">Post Ride</a></li>
-          <li>
-            <a href="#">
-                <i class="icon-menu icon-menu3"></i>
-                <span>account</span>
-            </a>
-            <ul>
-                @if (Auth::guest())
-            <li><a href="/auth/login">Login</a></li>
-            <li><a href="/auth/register">Register</a></li>
-          @else
-              <li><a href="home">
-                {{ Auth::user()->name }} </a></li>
-                <li><a href="/auth/logout">Logout</a></li>
-              </ul>
-            </li>
-          @endif
-        </ul>
-        </li>
-        </div>
-    </nav>
-
-        <div class="page-headder">
-            <div class="header section-padding">
-        <div class="background">&nbsp;</div>
-            @yield('jumbo')
-        </div>
-    </div>
-
-         
-         <div class="widget_login">
-            <div class="inner">
-               @yield('login')
-                 
+                    <li>
+                      <a href="#">
+                          <i class="icon-menu icon-menu3"></i>
+                          <span>account</span>
+                      </a>
+                      <ul>
+                          @if (Auth::guest())
+                      <li><a href="/auth/login">Login</a></li>
+                      <li><a href="/auth/register">Register</a></li>
+                    @else
+                        <li><a href="/home">
+                          {{ Auth::user()->name }} </a></li>
+                          <li><a href="/auth/logout">Logout</a></li>
+                        </ul>
+                      </li>
+                    @endif
+                   </ul>
+              </div>
             </div>
-        </div>
-        
+         </nav>
 
             <div class="container">
                   @yield('content')
             </div>
-        
-          <script type="text/javascript">
-            ('.dropdown-toggle').dropdown()
-
-        </script>
 
     </body>
  

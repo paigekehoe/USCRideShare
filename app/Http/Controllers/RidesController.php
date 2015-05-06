@@ -21,7 +21,6 @@ use App\Models\Location;
          public function rides(Request $request)
         {
 
-
             $config['center'] = '34.0205, -118.2856';
             $config['zoom'] = 'auto';
             $config['geocodeCaching'] = TRUE;
@@ -43,14 +42,6 @@ use App\Models\Location;
 
             return view('rides', $info); //['ridelist' => $rides, $info]);
         }
-
-        // public function home()
-        // {
-        //     $ratings = DB::table('ratings')->get();
-        //     $genres = DB::table('genres')->get();
-        //     return view('home', ['ratings' => $ratings,
-        //         'genres' => $genres]);
-        // }
 
         public function results(Request $request){
             if(empty($request)){
@@ -99,27 +90,6 @@ use App\Models\Location;
             $locations = DB::table('locations')->get();
             return view('newride', ['locations' => $locations ]);
         }
-
-        // public function createReview(Request $request){
-        //     $validation = Dvd::validate($request->all());
-
-        //     if($validation->passes()){
-        //         Dvd::createReview([
-        //            'title'=>$request->input('review_title'),
-        //             'rating'=>$request->input('rating'),
-        //             'description'=>$request->input('description'),
-        //             'dvd_id' =>$request->input('dvd_id'),
-
-        //         ]);
-        //         return redirect('/dvds/'.$request->input('dvd_id'))
-        //             ->with('success', 'Review created');
-        //     }
-        //     else {
-        //         return redirect('/dvds/'.$request->input('dvd_id'))
-        //             ->withInput()
-        //             ->withErrors($validation);
-        //     }
-
         
 
         public function addNewRide(Request $request){
@@ -129,7 +99,7 @@ use App\Models\Location;
                     'user_id' => $request->input('user_id'),
                     'spots_avail' => $request->input('spots_avail'),
                     'spots_filled'=>'0',
-                    'origin_id'=>$request->input('origin_id'),
+                    'origin_id'=>'2',
                     'destination_id'=>$request->input('destination_id'),
                     'datetime'=>$request->input('datetime')
                 ]);

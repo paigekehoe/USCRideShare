@@ -15,14 +15,17 @@
 @section('content')
 
     @foreach($errors->all() as $errorMessage)
-        <p><h5>  {{ $errorMessage }}  </h5> </p>
+        <p class="alert alert-danger"> {{ $errorMessage }} </p>
     @endforeach
 
     @if(Session::has('success'))
-    <p> <h4> {{ Session::get('success') }} </h4></p>
+    <p class="alert alert-success"> {{ Session::get('success') }} </p>
     @endif
 
 @if(Auth::check())
+
+<div class="controls boxed">
+    <div class="inner">
 
 <form method="post" action="/rides">
         <input type="hidden" name="_token" value= "{{ (csrf_token()) }}" >
@@ -34,7 +37,7 @@
                 <div class='col-sm-6'>
                     <div class="form-group">
                         <div class='input-group date' id='datetimepicker1'>
-                            <input type='text' name="datetime" class="form-control" />
+                            <input type='datetime' name="datetime" class="form-control" />
                             <span class="input-group-addon">
                                 <span class="glyphicon glyphicon-calendar"></span>
                             </span>
@@ -59,25 +62,23 @@
                 @endforeach
             </select>
         </div>
-  
-         <!-- THIS IS WHERE WE WILL INPUT A MAP TO CREATE THAT BABE -->
-        <div class="form-group">
-            <label> Starting Point </label>
-            <select class="form-control" name="origin_id">
-                @foreach ($locations as $loc)
-                    <option value = "{{ $loc->id }}" >
-                        {{ $loc->location_name }}
-                    </option>
-                @endforeach
-            </select>
-        </div>
 
         <div class="form-group">
-            <label>Number of Spots</label>
-            <input name="spots_avail" class="form-control">
+            <label>Number of Spots (besides yourself)</label>
+            <select class="form-control" name="spots_avail">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+            </select>
         </div>
         <button type="submit" class="btn btn-default">Submit</button>
     </form>
+</div>
+</div>
 
 @else 
 <div class="col-md-6">

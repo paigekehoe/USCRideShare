@@ -5,11 +5,16 @@
 @stop
 
 @section('jumbo')
-<h1> Search Results</h1>
-<h3> You searched for {{{ $datetime or 'any day' }} and {{{ $location or 'any place' }}} </h3>
+@if ($location == "-1")
+<?php $location = "any place" ?>
+@endif
+
+<h2><strong> Search Results <strong></h2>
+<h3> You searched for {{{ $datetime or 'any day' }}} and {{{ $location }}} </h3>
 @stop
 
 @section('content')
+<div class="well well-large">
 <div class = "results">
     <table class="table table-striped">
         <thead>
@@ -37,7 +42,7 @@
         </tbody>
     </table>
 
-
+</div>
 </div>
 
 

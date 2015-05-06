@@ -12,8 +12,8 @@
 @stop
 
 @section('content')
-<div class="post-item boxed">
-<div class="col-md-6">
+<div class="controls boxed">
+
 <div class="inner">
 
     <div class="row">
@@ -32,17 +32,13 @@
 
             </select>
         </div>
-
-            <div class="row">
                 <label> When would you like to go? </label>
                     <div class="form-group">
-                        <div class='input-group date' id='date'>
-                            <input type='text' class="form-control" />
+                        <div class='input-group date' id='datetimepicker1'>
+                            <input type='text' name="datetime" class="form-control" />
                             <span class="input-group-addon">
                                 <span class="glyphicon glyphicon-calendar"></span>
                             </span>
-                        </div>
-                    </div>
                 </div>
                 <script type="text/javascript">
                     $(document).ready(function() {
@@ -51,12 +47,9 @@
                 </script>
             </div>
         <input type="submit" value="Search">
-        </div>
-
-
     </form>
 </div>
-</div>
+            </div>
     </div>
 </div>
 
