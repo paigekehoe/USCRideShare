@@ -19,6 +19,8 @@ class Location extends Model {
 	public static function validate($input){
         return Validator::make($input, [
             'location_name'=>'required|unique:locations',
+            'lng'=>'required',
+            'lat'=>'required',
         ]);
     }
 

@@ -27,7 +27,7 @@ Route::get('/rides/{id}', 'RidesController@detailview');
 
 Route::post('/rides', 'RidesController@addNewRide');
 
-Route::get('/newLocation', 'LocationController@createLoc');
+Route::get('/newlocation', 'LocationController@createLoc');
 
 Route::post('/locations', 'LocationController@addNewLocation');
 

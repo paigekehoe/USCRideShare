@@ -27,7 +27,7 @@
 			<div class="inner clearfix">
 				<h2> Hey Admin! What would you like to do? </h2>
 				<div class="btn btn-default"> 
-					<a href="newLocation">Create a New Location</a>
+					<a href="/newlocation">Create a New Location</a>
 				</div>
 			</div>
 		</div>
@@ -36,7 +36,7 @@
 @endif
 
 
-<div class="col-sm-7">
+<!-- <div class="col-sm-7">
 <div class="widget-container boxed">
     <h3 class="widget-title">My Rides</h3>
     	<div class="inner">
@@ -45,7 +45,7 @@
     	</div>
     </div>
 
-</div>
+</div> -->
 
 
 @unless (Auth::check())

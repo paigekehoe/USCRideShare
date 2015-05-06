@@ -43,14 +43,16 @@ use App\Services\Weather;
             $validation = Location::validate($request->all());
             if($validation->passes()){
                 Location::addNew([
-                    'location_name' => $request->input('name'),
+                    'location_name' => $request->input('location_name'),
+                    'lat'=>$request->input('lat'),
+                    'lng'=>$request->input('lng'),
 
                 ]);
-                return redirect('admin')
+                return redirect('newlocation')
                 ->with('success', 'Location created!');
             }
             else {
-                return redirect('admin')
+                return redirect('newlocation')
                     ->withInput()
                     ->withErrors($validation);
             }
@@ -66,7 +68,6 @@ use App\Services\Weather;
             $weather['loc'] = $loc;
             $nada = "-1";
             $ridelist = (new Ride())->search($loc_id, $nada);
-            var_dump($ridelist);
             $weather['ridelist'] = $ridelist;
             return view('aboutlocation', $weather);
         }
