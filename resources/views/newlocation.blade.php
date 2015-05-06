@@ -19,7 +19,7 @@
             // .done(function(data) {
                 var holder = newLat;
                 var holder2 = newLng;
-                //alert( document.getElementById("newLocLat"));
+                alert( document.getElementById("newLocLat"));
                 document.getElementById("newLocLat").value = holder;
                 document.getElementById("newLocLng").value = holder2;
                 //alert("Database updated");

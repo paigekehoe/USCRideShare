@@ -34,7 +34,7 @@ use App\Services\Weather;
 
             //$this->load->view('view_file', $data);
 
-            return view('newLocation', $data);
+            return view('newlocation', $data);
         }
 
 
