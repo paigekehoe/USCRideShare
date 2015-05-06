@@ -20,7 +20,6 @@
         <thead>
          <tr>
                 <th>Destination</th>
-                <th>Meeting Point</th>
                 <th>Date</th>
                 <th>Time</th>
                 <th>Spots Available</th>
@@ -32,7 +31,6 @@
 
         <tr>
             <td> {{ $ride->location_name }} </td>
-            <td> {{ $ride->origin_id }} </td>
             <td> {{ $ride->datetime }} </td>
             <td> </td>
             <td> {{ $ride->spots_avail - $ride->spots_filled }} </td>
