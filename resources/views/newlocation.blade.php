@@ -3,7 +3,32 @@
 @section('headder')
 
 <head>
+
+<script type="text/javascript">
+        function updateDatabase(newLat, newLng)
+        {
+            //var extraVar = form.name;
+            alert("I got this: " + newLat + newLng);// + extraVar);
+            // make an ajax request to a PHP file
+            // on our site that will update the database
+            // pass in our lat/lng as parameters
+            // $.post(
+            //     "/newLocation", 
+            //     { 'newLat': newLat, 'newLng': newLng, 'var1': 'value1' }
+            // )
+            // .done(function(data) {
+                var holder = newLat;
+                var holder2 = newLng;
+                //alert( document.getElementById("newLocLat"));
+                document.getElementById("newLocLat").value = holder;
+                document.getElementById("newLocLng").value = holder2;
+                //alert("Database updated");
+            // });
+        }
+    </script>
+
 <?php echo $map['js']; ?>
+
 </head>
 
 @stop
@@ -38,8 +63,10 @@ to add locations or remove them - but only as an Admin (david) -->
     <div class="inner clearfix">
 <h3> Drag the market to the geographical coordinates of your location and input a name. </h3>
 
-<form method="post" action="/locations">
-        <input type="hidden" name="_token" value= "{{ (csrf_token()) }}" >
+<form method="post" action="/locations" name="myform">
+        <input type="hidden" name="_token" value= "{{ (csrf_token()) }}" />
+        <input type="hidden" name="newLocLat" value="not set" />
+        <input type="hidden" name="newLocLng" value="not set yet" />
 
         <div class="container">
             <div class="row">

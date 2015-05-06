@@ -11,14 +11,6 @@ use App\Services\Weather;
 
     class LocationController extends Controller {
 
-        // public function detailview($ride_id){
-        //     $ride = Ride::getRide($ride_id);
-        //     $data = ['ride'=>$ride];
-
-        //     return view('detailview', $data);
-        // }
-
-
 
         public function createLoc(){
 
@@ -33,6 +25,7 @@ use App\Services\Weather;
         $marker['position'] = '34.0205, -118.2856';
         $marker['draggable'] = true;
         $marker['infowindow_content'] = "I'm a new location!";
+        $marker['ondragend'] = 'updateDatabase(event.latLng.lat(), event.latLng.lng());';
         Gmaps::add_marker($marker);
 
         $data['map'] = Gmaps::create_map();
